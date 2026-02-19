@@ -1,2 +1,2 @@
-# booltstore-infrastructure
+# gastroman-infrastructure
 dev branch
