@@ -1,3 +1,6 @@
+locals {
+  environment = terraform.workspace
+}
 terraform {
   required_providers {
     aws = {

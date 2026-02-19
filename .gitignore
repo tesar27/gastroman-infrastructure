@@ -1,1 +1,7 @@
 notes.md
+/notes
+*.log
+*.tmp
+.terraform
+/terraform.tfstate.d
+port

@@ -1,3 +1,8 @@
-resource "aws_vpc" "main" {
-  cidr_block = "10.0.0.0/16"
+resource "aws_vpc" "booltstore_vpc" {
+  cidr_block       = var.vpc_cidr_block
+  instance_tenancy = "default"
+
+  tags = {
+    Name = "booltstore_vpc"
+  }
 }
