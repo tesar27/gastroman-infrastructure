@@ -5,3 +5,4 @@ notes.md
 .terraform
 /terraform.tfstate.d
 port
+*.tfvars

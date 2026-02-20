@@ -40,3 +40,13 @@ variable "aws_availability_zone_b" {
   description = "value for the availability zone"
   default     = "us-west-2b"
 }
+
+variable "my_local_public_ip" {
+  description = "My local IP address for SSH access (in CIDR notation, e.g., 203.0.113.25/32)"
+  type        = string
+}
+
+variable "key_pair_name" {
+  description = "Name of the AWS Key Pair for SSH access"
+  type        = string
+}

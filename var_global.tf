@@ -1,5 +1,5 @@
 variable "aws_profile" {
-  description = "(Optional) AWS profile to use for deployment"
+  description = "AWS profile for deployment"
   type        = string
   default     = null
 }
