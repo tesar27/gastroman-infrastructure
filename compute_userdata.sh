@@ -17,6 +17,9 @@ cd /var/www/app/frontend
 npm ci || npm install
 npm run build
 
+# Set ownership
+chown -R ec2-user:ec2-user /var/www/app/frontend
+sudo -u ec2-user git config --global --add safe.directory /var/www/app/frontend
 # Configure Nginx to serve the React app
 cat <<'EOT' > /etc/nginx/conf.d/react.conf
 server {

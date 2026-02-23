@@ -4,7 +4,7 @@ resource "aws_security_group" "webserver_sg" {
   vpc_id      = aws_vpc.gastroman_vpc.id
 
   tags = {
-    Name        = "ssh-sg"
+    Name        = "webserver-sg"
     Environment = local.environment
   }
 }
