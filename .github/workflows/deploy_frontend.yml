@@ -17,7 +17,7 @@ jobs:
           script: |
             set -e
             cd /var/www/app/frontend
-            git pull origin main
+            git pull origin dev
             npm ci
             npm run build
             sudo nginx -t
