@@ -42,7 +42,7 @@ variable "aws_availability_zone_b" {
 }
 
 variable "my_local_public_ip" {
-  description = "My local IP address for SSH access (in CIDR notation, e.g., 203.0.113.25/32)"
+  description = "Single local IP address or CIDR range for SSH access (string, e.g., 203.0.113.25/32). This variable supports only one IP/CIDR; configure any additional access separately."
   type        = string
 }
 
