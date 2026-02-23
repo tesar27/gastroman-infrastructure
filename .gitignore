@@ -1,0 +1,11 @@
+notes.md
+/notes
+*.log
+*.tmp
+.terraform
+/terraform.tfstate.d
+port
+*.tfvars
+*.pem
+database.tf
+var_database.tf
