@@ -7,3 +7,5 @@ notes.md
 port
 *.tfvars
 *.pem
+database.tf
+var_database.tf

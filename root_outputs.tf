@@ -12,3 +12,18 @@ output "vpc_id" {
   description = "ID of the VPC"
   value       = aws_vpc.gastroman_vpc.id
 }
+
+# output "mariadb_endpoint" {
+#   description = "MariaDB endpoint"
+#   value       = aws_db_instance.mariadb.endpoint
+# }
+
+# output "mariadb_db_name" {
+#   description = "MariaDB database name"
+#   value       = aws_db_instance.mariadb.db_name
+# }
+
+# output "mariadb_port" {
+#   description = "MariaDB port"
+#   value       = aws_db_instance.mariadb.port
+# }
