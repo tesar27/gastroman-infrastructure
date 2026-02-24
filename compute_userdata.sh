@@ -9,6 +9,11 @@ yum install -y git nginx
 curl -fsSL https://rpm.nodesource.com/setup_20.x | bash -
 yum install -y nodejs
 
+# Install MariaDB
+sudo amazon-linux-extras enable mariadb10.5
+sudo yum clean metadata
+sudo yum install -y mariadb unzip
+
 # Clone the repository
 git clone https://github.com/tesar27/gastroman-frontend.git /var/www/app/frontend
 
@@ -20,6 +25,7 @@ npm run build
 # Set ownership
 chown -R ec2-user:ec2-user /var/www/app/frontend
 sudo -u ec2-user git config --global --add safe.directory /var/www/app/frontend
+
 # Configure Nginx to serve the React app
 cat <<'EOT' > /etc/nginx/conf.d/react.conf
 server {
