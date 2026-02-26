@@ -9,17 +9,40 @@ yum install -y git nginx
 curl -fsSL https://rpm.nodesource.com/setup_20.x | bash -
 yum install -y nodejs
 
+# Install MariaDB Server
+dnf install -y mariadb105-server unzip || yum install -y mariadb-server unzip
+
+systemctl enable --now mariadb
+
+# Set variables
+DBName="gastroman_db"
+DBUser="gastroman_user"
+DBPassword="password3141!"
+
+# Initialize database and app user (idempotent)
+mysql -uroot <<SQL
+CREATE DATABASE IF NOT EXISTS \`${DBName}\`;
+CREATE USER IF NOT EXISTS '${DBUser}'@'localhost' IDENTIFIED BY '${DBPassword}';
+ALTER USER '${DBUser}'@'localhost' IDENTIFIED BY '${DBPassword}';
+GRANT ALL PRIVILEGES ON \`${DBName}\`.* TO '${DBUser}'@'localhost';
+FLUSH PRIVILEGES;
+SQL
+
+# Install pnpm
+npm install -g pnpm
+
 # Clone the repository
 git clone https://github.com/tesar27/gastroman-frontend.git /var/www/app/frontend
 
 # Build the React app
 cd /var/www/app/frontend
-npm ci || npm install
-npm run build
+pnpm install
+pnpm run build
 
 # Set ownership
 chown -R ec2-user:ec2-user /var/www/app/frontend
-sudo -u ec2-user git config --global --add safe.directory /var/www/app/frontend
+su - ec2-user -c 'git config --global --add safe.directory /var/www/app/frontend'
+
 # Configure Nginx to serve the React app
 cat <<'EOT' > /etc/nginx/conf.d/react.conf
 server {
