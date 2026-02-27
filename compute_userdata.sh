@@ -10,23 +10,23 @@ curl -fsSL https://rpm.nodesource.com/setup_20.x | bash -
 yum install -y nodejs
 
 # Install MariaDB Server
-dnf install -y mariadb105-server unzip || yum install -y mariadb-server unzip
+# dnf install -y mariadb105-server unzip || yum install -y mariadb-server unzip
 
-systemctl enable --now mariadb
+# systemctl enable --now mariadb
 
 # Set variables
-DBName="gastroman_db"
-DBUser="gastroman_user"
-DBPassword="password3141!"
+# DBName="gastroman_db"
+# DBUser="gastroman_user"
+# DBPassword="password3141!"
 
 # Initialize database and app user (idempotent)
-mysql -uroot <<SQL
-CREATE DATABASE IF NOT EXISTS \`${DBName}\`;
-CREATE USER IF NOT EXISTS '${DBUser}'@'localhost' IDENTIFIED BY '${DBPassword}';
-ALTER USER '${DBUser}'@'localhost' IDENTIFIED BY '${DBPassword}';
-GRANT ALL PRIVILEGES ON \`${DBName}\`.* TO '${DBUser}'@'localhost';
-FLUSH PRIVILEGES;
-SQL
+# mysql -uroot <<SQL
+# CREATE DATABASE IF NOT EXISTS \`${DBName}\`;
+# CREATE USER IF NOT EXISTS '${DBUser}'@'localhost' IDENTIFIED BY '${DBPassword}';
+# ALTER USER '${DBUser}'@'localhost' IDENTIFIED BY '${DBPassword}';
+# GRANT ALL PRIVILEGES ON \`${DBName}\`.* TO '${DBUser}'@'localhost';
+# FLUSH PRIVILEGES;
+# SQL
 
 # Install pnpm
 npm install -g pnpm

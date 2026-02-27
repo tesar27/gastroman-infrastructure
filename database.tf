@@ -9,7 +9,7 @@ resource "aws_db_subnet_group" "gastroman_db_subnet_group" {
 }
 
 resource "aws_security_group" "mariadb_sg" {
-  name        = "gastroman-mariadb-sg"
+  name        = "gastroman-mariadb-sg-${terraform.workspace}"
   description = "Security group for Gastroman MariaDB"
   vpc_id      = aws_vpc.gastroman_vpc.id
 
