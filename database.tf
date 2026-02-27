@@ -67,3 +67,13 @@ resource "aws_db_instance" "mariadb" {
     Environment = terraform.workspace
   }
 }
+
+resource "aws_ssm_parameter" "db_password" {
+  name  = "/gastroman/dev/db_password"
+  type  = "SecureString"
+  value = var.db_admin_password
+
+  tags = {
+    Environment = terraform.workspace
+  }
+}
